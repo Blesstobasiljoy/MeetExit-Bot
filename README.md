@@ -43,9 +43,16 @@ Install the extension manually in **Brave**, **Chrome**, or any Chromium-based b
 ## 📸 Interface Preview
 
 | Dark Mode (Active) | Light Mode (Idle) |
-
+|:---:|:---:|
 | <img src="screenshots/dark_active.png" width="250"> | <img src="screenshots/light_idle.png" width="250"> |
 ---
+
+```markdown
+## 📸 Interface Preview
+
+| Dark Mode (Active) | Light Mode (Idle) |
+|:---:|:---:|
+| <img src="screenshots/dark_active.png" width="250"> | <img src="screenshots/light_idle.png" width="250"> |
 
 ## 📄 License
 
