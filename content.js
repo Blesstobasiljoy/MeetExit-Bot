@@ -1,3 +1,5 @@
+chrome.storage.local.set({ liveCount: 0 });
+
 // Function to find the count in your Mobile/Responsive view
 function getParticipantCount() {
   // Broad search for the number bubble
@@ -27,21 +29,23 @@ const observer = new MutationObserver(() => {
 
     const currentCount = getParticipantCount();
 
-    // SAVE the count to storage (The popup reads this)
-    if (currentCount !== null) {
-      chrome.storage.local.set({ liveCount: currentCount });
-    }
+    // --- FIX 2: HANDLE ZERO / NULL ---
+    // If we find a number, save it. If null (left meeting), save 0.
+    const safeCount = currentCount !== null ? currentCount : 0;
+    chrome.storage.local.set({ liveCount: safeCount });
 
-    // Check if we need to leave
-    chrome.storage.local.get(['meetThreshold', 'botActive'], (data) => {
-      if (data.botActive && currentCount !== null && currentCount < data.meetThreshold) {
-        const leaveBtn = document.querySelector('button[aria-label*="Leave"], .y97SHe');
-        if (leaveBtn) {
-          leaveBtn.click();
-          chrome.storage.local.set({ botActive: false });
+    // Check if we need to leave (Only runs if we actually found a number)
+    if (currentCount !== null) {
+      chrome.storage.local.get(['meetThreshold', 'botActive'], (data) => {
+        if (data.botActive && currentCount < data.meetThreshold) {
+          const leaveBtn = document.querySelector('button[aria-label*="Leave"], .y97SHe');
+          if (leaveBtn) {
+            leaveBtn.click();
+            chrome.storage.local.set({ botActive: false });
+          }
         }
-      }
-    });
+      });
+    }
   } catch (e) {}
 });
 

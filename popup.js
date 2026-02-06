@@ -5,7 +5,9 @@ const liveCountDisplay = document.getElementById('liveCount');
 const counterBox = document.getElementById('counterBox');
 const themeBtn = document.getElementById('themeBtn');
 
-// --- 1. THEME LOGIC ---
+let isMeetingTab = false;
+
+// --- THEME LOGIC ---
 function applyTheme(isLight) {
   if (isLight) {
     document.body.classList.add('light-mode');
@@ -22,54 +24,67 @@ themeBtn.addEventListener('click', () => {
   chrome.storage.local.set({ theme: !isLight ? 'light' : 'dark' });
 });
 
-// --- 2. DATA SYNC ---
+// --- DISPLAY UPDATER ---
+function updateDisplay(count) {
+  const intCount = parseInt(count);
+  const intThreshold = parseInt(thresholdInput.value);
+
+  liveCountDisplay.innerText = intCount;
+
+  // Reset visuals first
+  counterBox.classList.remove("status-safe", "status-danger");
+
+  // Only apply colors/pulse if count is greater than 0
+  if (intCount > 0) {
+    if (intCount <= intThreshold + 1) {
+       counterBox.classList.add("status-danger"); // Red Pulse
+    } else {
+       counterBox.classList.add("status-safe"); // Green Pulse
+    }
+  }
+}
+
+// --- MAIN LOGIC ---
 function refreshData() {
   chrome.storage.local.get(['liveCount', 'meetThreshold', 'botActive', 'theme'], (data) => {
-    // Apply Theme
+    // 1. Theme
     if (data.theme === 'light') applyTheme(true);
     else applyTheme(false);
 
-    // Update Count Text
-    const count = data.liveCount !== undefined ? data.liveCount : "--";
-    liveCountDisplay.innerText = count;
-
-    // Update Inputs
+    // 2. Settings
     if (data.meetThreshold) thresholdInput.value = data.meetThreshold;
     toggle.checked = !!data.botActive;
 
-    // Update Visuals (Red/Green Logic)
-    const intCount = parseInt(count);
-    const intThreshold = parseInt(thresholdInput.value);
+    // 3. Count Logic (The Fix)
+    // If we are NOT in a meeting, FORCE 0. Otherwise, use storage.
+    const realCount = isMeetingTab ? (data.liveCount || 0) : 0;
     
-    // Remove old styles
-    counterBox.classList.remove("status-safe", "status-danger");
-
-    // Apply new style based on logic
-    if (!isNaN(intCount) && intCount <= intThreshold + 1) {
-       counterBox.classList.add("status-danger"); // Red Text & Border
-    } else {
-       counterBox.classList.add("status-safe"); // Theme-based Text & Green Border
-    }
+    updateDisplay(realCount);
   });
 }
-
-// Initial Load
-refreshData();
 
 // Listen for updates
 chrome.storage.onChanged.addListener((changes) => {
   if (changes.liveCount) refreshData();
 });
 
-// URL Check
+// --- URL CHECK (Run this first) ---
 chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-  if (tabs?.[0]?.url?.includes('meet.google.com')) {
+  const url = tabs[0]?.url || "";
+  
+  // Check if it's a real meeting URL (contains 3-4-3 char code)
+  if (url.includes('meet.google.com') && url.match(/[a-z]{3}-[a-z]{4}-[a-z]{3}/)) {
+    isMeetingTab = true;
     urlDisplay.innerText = "● LIVE CONNECTION";
     urlDisplay.style.color = "#34a853";
   } else {
-    urlDisplay.innerText = "○ WAITING FOR MEET";
+    isMeetingTab = false;
+    urlDisplay.innerText = "○ DISCONNECTED";
     urlDisplay.style.color = "#9aa0a6";
   }
+  
+  // Now load data
+  refreshData();
 });
 
 // Save Settings
