@@ -29,7 +29,7 @@ Have you ever zoned out during a meeting, only to realize 10 minutes later that 
 
 Install the extension manually in **Brave**, **Chrome**, or any Chromium-based browser:
 
-1.. **Download** or **Clone** this repository:
+1. **Download** or **Clone** this repository:
     ```bash
     git clone [https://github.com/Blesstobasiljoy/MeetExit-Bot.git](https://github.com/Blesstobasiljoy/MeetExit-Bot.git)
     ```
