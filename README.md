@@ -32,8 +32,6 @@ Install the extension manually in **Brave**, **Chrome**, or any Chromium-based b
 1. **Download** or **Clone** this repository:
    ```bash
    git clone [https://github.com/Blesstobasiljoy/MeetExit-Bot.git](https://github.com/Blesstobasiljoy/MeetExit-Bot.git)
-
-<a href="AUTOMEET file.zip" download>Click to Download</a>
 2.  Open your browser and navigate to the **Extensions** page (`brave://extensions` or `chrome://extensions`).
 3.  Enable **Developer Mode** (top-right toggle).
 4.  Click **Load Unpacked**.
