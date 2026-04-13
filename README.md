@@ -38,7 +38,7 @@ Install the extension manually in **Brave**, **Chrome**, or any Chromium-based b
 6.  Open Google Meet and "Engage" your new bot!
 
 | step 1 | step 2 |
-|:---:|
+|:---:|:---:|
 | <img src="screenshots/step 1.png" width="400"> | <img src="screenshots/step 2.png" width="800"> |
 
 ---
