@@ -3,26 +3,10 @@ const thresholdInput = document.getElementById('threshold');
 const urlDisplay = document.getElementById('meetUrl');
 const liveCountDisplay = document.getElementById('liveCount');
 const counterBox = document.getElementById('counterBox');
-const themeBtn = document.getElementById('themeBtn');
 
 let isMeetingTab = false;
 
-// --- THEME LOGIC ---
-function applyTheme(isLight) {
-  if (isLight) {
-    document.body.classList.add('light-mode');
-    themeBtn.innerText = "☀️";
-  } else {
-    document.body.classList.remove('light-mode');
-    themeBtn.innerText = "🌙";
-  }
-}
 
-themeBtn.addEventListener('click', () => {
-  const isLight = document.body.classList.contains('light-mode');
-  applyTheme(!isLight);
-  chrome.storage.local.set({ theme: !isLight ? 'light' : 'dark' });
-});
 
 // --- DISPLAY UPDATER ---
 function updateDisplay(count) {
@@ -46,12 +30,9 @@ function updateDisplay(count) {
 
 // --- MAIN LOGIC ---
 function refreshData() {
-  chrome.storage.local.get(['liveCount', 'meetThreshold', 'botActive', 'theme'], (data) => {
-    // 1. Theme
-    if (data.theme === 'light') applyTheme(true);
-    else applyTheme(false);
+  chrome.storage.local.get(['liveCount', 'meetThreshold', 'botActive'], (data) => {
 
-    // 2. Settings
+    // 1. Settings
     if (data.meetThreshold) thresholdInput.value = data.meetThreshold;
     toggle.checked = !!data.botActive;
 

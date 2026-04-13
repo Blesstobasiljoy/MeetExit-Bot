@@ -10,13 +10,7 @@
       background-color: #202124; color: #e8eaed; margin: 0;
     }
 
-    /* --- 2. LIGHT THEME OVERRIDES --- */
-    body.light-mode { background-color: #ffffff; color: #202124; }
-    body.light-mode .counter-box { background: #f8f9fa; border-color: #dadce0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    body.light-mode .control-row { background: #f1f3f4; }
-    body.light-mode input { background: #ffffff; color: #202124; border-color: #dadce0; }
-    body.light-mode label { color: #5f6368; }
-    body.light-mode .status-safe .live-count { color: #1a73e8; }
+
 
     /* --- 3. DYNAMIC STATUS (THE FIX) --- */
     /* GREEN PULSE (Restored) */
@@ -45,8 +39,7 @@
 
     /* --- 4. UI ELEMENTS --- */
     h3 { margin: 0 0 5px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #8ab4f8; text-align: center; }
-    #themeBtn { position: absolute; top: 10px; left: 10px; background: none; border: none; cursor: pointer; font-size: 16px; opacity: 0.7; transition: 0.2s; }
-    #themeBtn:hover { opacity: 1; transform: scale(1.1); }
+
     .status-indicator { font-size: 10px; text-align: center; color: #9aa0a6; margin-bottom: 20px; font-weight: 500; }
     
     .counter-box {
@@ -73,7 +66,7 @@
   </style>
 </head>
 <body>
-  <button id="themeBtn" title="Switch Theme">🌙</button>
+
   <h3>MeetExit Bot</h3>
   <div id="meetUrl" class="status-indicator">Connecting...</div>
 
