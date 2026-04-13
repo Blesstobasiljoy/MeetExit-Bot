@@ -30,7 +30,8 @@ Have you ever zoned out during a meeting, only to realize 10 minutes later that 
 Install the extension manually in **Brave**, **Chrome**, or any Chromium-based browser:
 
 1. **Download** or **Clone** this repository:
-  [![Button Text](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/Blesstobasiljoy/MeetExit-Bot/archive/refs/heads/main.zip)
+---
+  [![Button Text](https://img.shields.io/badge/Click_Here_to_Download-?style=for-the-badge)](https://github.com/Blesstobasiljoy/MeetExit-Bot/archive/refs/heads/main.zip)
 2.  Open your browser and navigate to the **Extensions** page (`brave://extensions` or `chrome://extensions`).
 3.  Enable **Developer Mode** (top-right toggle).
 4.  Click **Load Unpacked**.
