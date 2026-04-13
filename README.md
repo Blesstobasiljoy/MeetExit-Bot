@@ -29,15 +29,14 @@ Have you ever zoned out during a meeting, only to realize 10 minutes later that 
 
 Install the extension manually in **Brave**, **Chrome**, or any Chromium-based browser:
 
-1. **Download** this repository:
-  [![Button Text](https://img.shields.io/badge/Click_Here-blue?style=for-the-badge)](https://github.com/Blesstobasiljoy/MeetExit-Bot/archive/refs/heads/main.zip)
+1. **Download** this repository:<br>
+  [![Button Text](https://img.shields.io/badge/Click_Here-green?style=for-the-badge)](https://github.com/Blesstobasiljoy/MeetExit-Bot/archive/refs/heads/main.zip)
 2.  Open your browser and navigate to the **Extensions** page (`brave://extensions` or `chrome://extensions`).
 3.  Enable **Developer Mode** (top-right toggle).
 4.  Click **Load Unpacked**.
 5.  Select the folder containing these files.
 6.  Open Google Meet and "Engage" your new bot!
 
- [Download](https://github.com/Blesstobasiljoy/MeetExit-Bot/archive/refs/heads/main.zip)
 ---
 
 ## 📸 Interface Preview
