@@ -38,6 +38,7 @@ Install the extension manually in **Brave**, **Chrome**, or any Chromium-based b
 5.  Select the folder containing these files.
 6.  Open Google Meet and "Engage" your new bot!
 
+ [Download](https://github.com/Blesstobasiljoy/MeetExit-Bot/archive/refs/heads/main.zip)
 ---
 
 ## 📸 Interface Preview
